@@ -1,0 +1,24 @@
+{
+  "name": "FocusTimer - Pomodoro Timer",
+  "short_name": "FocusTimer",
+  "description": "Beautiful Pomodoro timer with 30+ themes and productivity features",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#4a90e2",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["productivity", "utilities", "lifestyle"],
+  "version": "1.0.2",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

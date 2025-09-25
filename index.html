@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>FocusTimer - Beautiful Pomodoro Timer</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="FocusTimer">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FocusTimer">
+    <meta name="description" content="Beautiful Pomodoro timer with 30+ themes and productivity features">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4a90e2">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json?v=1.0.2">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="icons/icon.svg">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/icon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon.svg">
+    <link rel="apple-touch-icon" sizes="167x167" href="icons/icon.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon.svg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background Elements -->
+        <div class="background-elements">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+            
+            
+            <!-- Rain Animation -->
+            <div class="rain-container" id="rainContainer">
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+                <div class="rain-drop"></div>
+            </div>
+            
+            <!-- Stars Animation -->
+            <div class="stars-container" id="starsContainer">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+            
+            <!-- Cherry Blossom Animation -->
+            <div class="cherry-blossom-container" id="cherryBlossomContainer">
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+                <div class="cherry-blossom"></div>
+            </div>
+            
+            <!-- Ocean Waves Animation -->
+            <div class="ocean-waves-container" id="oceanWavesContainer">
+                <div class="wave wave-1"></div>
+                <div class="wave wave-2"></div>
+                <div class="wave wave-3"></div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-clock"></i>
+                <span>FocusTimer</span>
+            </div>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <button class="settings-btn" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Timer Section -->
+        <main class="main-content">
+            <div class="timer-container">
+                <!-- Weather Display -->
+                <div class="weather-display" id="weatherDisplay">
+                    <div class="weather-info">
+                        <i class="fas fa-cloud-sun weather-icon"></i>
+                        <span class="weather-temp">22°C</span>
+                        <span class="weather-location">New York</span>
+                    </div>
+                </div>
+
+                <!-- Timer Circle -->
+                <div class="timer-circle">
+                    <svg class="progress-ring" width="300" height="300">
+                        <circle
+                            class="progress-ring-circle"
+                            stroke="currentColor"
+                            stroke-width="8"
+                            fill="transparent"
+                            r="140"
+                            cx="150"
+                            cy="150"
+                        />
+                    </svg>
+                    <div class="timer-content">
+                        <div class="timer-mode" id="timerMode">Focus</div>
+                        <div class="timer-display" id="timerDisplay">25:00</div>
+                        <div class="timer-session" id="timerSession">Session 1 of 4</div>
+                    </div>
+                </div>
+
+                <!-- Timer Controls -->
+                <div class="timer-controls">
+                    <button class="control-btn secondary" id="resetBtn">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button class="control-btn primary" id="playPauseBtn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn secondary" id="skipBtn">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+
+                <!-- Mode Selector -->
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="focus">Focus</button>
+                    <button class="mode-btn" data-mode="short-break">Short Break</button>
+                    <button class="mode-btn" data-mode="long-break">Long Break</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settingsPanel">
+            <div class="settings-content">
+                <div class="settings-header">
+                    <h3>Settings</h3>
+                    <button class="close-btn" id="closeSettings">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="settings-section">
+                    <h4>Timer Durations</h4>
+                    <div class="setting-item">
+                        <label for="focusDuration">Focus Time (minutes)</label>
+                        <input type="number" id="focusDuration" value="25" min="1" max="60">
+                    </div>
+                    <div class="setting-item">
+                        <label for="shortBreakDuration">Short Break (minutes)</label>
+                        <input type="number" id="shortBreakDuration" value="5" min="1" max="30">
+                    </div>
+                    <div class="setting-item">
+                        <label for="longBreakDuration">Long Break (minutes)</label>
+                        <input type="number" id="longBreakDuration" value="15" min="1" max="60">
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4>Themes</h4>
+                    <div class="theme-grid">
+                        <button class="theme-option active" data-theme="ocean">
+                            <div class="theme-preview ocean"></div>
+                            <span>Ocean</span>
+                        </button>
+                        <button class="theme-option" data-theme="sunset">
+                            <div class="theme-preview sunset"></div>
+                            <span>Sunset</span>
+                        </button>
+                        <button class="theme-option" data-theme="forest">
+                            <div class="theme-preview forest"></div>
+                            <span>Forest</span>
+                        </button>
+                        <button class="theme-option" data-theme="night">
+                            <div class="theme-preview night"></div>
+                            <span>Night</span>
+                        </button>
+                        <button class="theme-option" data-theme="aurora">
+                            <div class="theme-preview aurora"></div>
+                            <span>Aurora</span>
+                        </button>
+                        <button class="theme-option" data-theme="minimal">
+                            <div class="theme-preview minimal"></div>
+                            <span>Minimal</span>
+                        </button>
+                        <button class="theme-option" data-theme="rain">
+                            <div class="theme-preview rain"></div>
+                            <span>Rain</span>
+                        </button>
+                        <button class="theme-option" data-theme="stars">
+                            <div class="theme-preview stars"></div>
+                            <span>Stars</span>
+                        </button>
+                        <button class="theme-option" data-theme="cherry-blossom">
+                            <div class="theme-preview cherry-blossom"></div>
+                            <span>Cherry Blossom</span>
+                        </button>
+                        <button class="theme-option" data-theme="ocean-waves">
+                            <div class="theme-preview ocean-waves"></div>
+                            <span>Ocean Waves</span>
+                        </button>
+                        <button class="theme-option" data-theme="autumn">
+                            <div class="theme-preview autumn"></div>
+                            <span>Autumn</span>
+                        </button>
+                        <button class="theme-option" data-theme="spring">
+                            <div class="theme-preview spring"></div>
+                            <span>Spring</span>
+                        </button>
+                        <button class="theme-option" data-theme="summer">
+                            <div class="theme-preview summer"></div>
+                            <span>Summer</span>
+                        </button>
+                        <button class="theme-option" data-theme="winter">
+                            <div class="theme-preview winter"></div>
+                            <span>Winter</span>
+                        </button>
+                        <button class="theme-option" data-theme="galaxy">
+                            <div class="theme-preview galaxy"></div>
+                            <span>Galaxy</span>
+                        </button>
+                        <button class="theme-option" data-theme="neon">
+                            <div class="theme-preview neon"></div>
+                            <span>Neon</span>
+                        </button>
+                        <button class="theme-option" data-theme="vintage">
+                            <div class="theme-preview vintage"></div>
+                            <span>Vintage</span>
+                        </button>
+                        <button class="theme-option" data-theme="cyberpunk">
+                            <div class="theme-preview cyberpunk"></div>
+                            <span>Cyberpunk</span>
+                        </button>
+                        <button class="theme-option" data-theme="lavender">
+                            <div class="theme-preview lavender"></div>
+                            <span>Lavender</span>
+                        </button>
+                        <button class="theme-option" data-theme="emerald">
+                            <div class="theme-preview emerald"></div>
+                            <span>Emerald</span>
+                        </button>
+                        <button class="theme-option" data-theme="coral">
+                            <div class="theme-preview coral"></div>
+                            <span>Coral</span>
+                        </button>
+                        <button class="theme-option" data-theme="midnight">
+                            <div class="theme-preview midnight"></div>
+                            <span>Midnight</span>
+                        </button>
+                        <button class="theme-option" data-theme="golden">
+                            <div class="theme-preview golden"></div>
+                            <span>Golden</span>
+                        </button>
+                        <button class="theme-option" data-theme="rose">
+                            <div class="theme-preview rose"></div>
+                            <span>Rose</span>
+                        </button>
+                        <button class="theme-option" data-theme="mint">
+                            <div class="theme-preview mint"></div>
+                            <span>Mint</span>
+                        </button>
+                        <button class="theme-option" data-theme="peach">
+                            <div class="theme-preview peach"></div>
+                            <span>Peach</span>
+                        </button>
+                        <button class="theme-option" data-theme="indigo">
+                            <div class="theme-preview indigo"></div>
+                            <span>Indigo</span>
+                        </button>
+                        <button class="theme-option" data-theme="turquoise">
+                            <div class="theme-preview turquoise"></div>
+                            <span>Turquoise</span>
+                        </button>
+                        <button class="theme-option" data-theme="crimson">
+                            <div class="theme-preview crimson"></div>
+                            <span>Crimson</span>
+                        </button>
+                        <button class="theme-option" data-theme="silver">
+                            <div class="theme-preview silver"></div>
+                            <span>Silver</span>
+                        </button>
+                        <button class="theme-option" data-theme="copper">
+                            <div class="theme-preview copper"></div>
+                            <span>Copper</span>
+                        </button>
+                        <button class="theme-option" data-theme="amethyst">
+                            <div class="theme-preview amethyst"></div>
+                            <span>Amethyst</span>
+                        </button>
+                        <button class="theme-option" data-theme="jade">
+                            <div class="theme-preview jade"></div>
+                            <span>Jade</span>
+                        </button>
+                        <button class="theme-option" data-theme="ruby">
+                            <div class="theme-preview ruby"></div>
+                            <span>Ruby</span>
+                        </button>
+                        <button class="theme-option" data-theme="sapphire">
+                            <div class="theme-preview sapphire"></div>
+                            <span>Sapphire</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4>Notifications</h4>
+                    <div class="setting-item">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="soundEnabled" checked>
+                            <span class="checkmark"></span>
+                            Enable Sound Notifications
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="desktopNotifications" checked>
+                            <span class="checkmark"></span>
+                            Desktop Notifications
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Selector -->
+        <div class="theme-selector" id="themeSelector">
+            <div class="theme-selector-header">
+                <h3>Choose a Theme</h3>
+                <button class="close-theme-btn" id="closeThemeBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="theme-options">
+                <button class="theme-btn" data-theme="ocean">
+                    <div class="theme-preview ocean"></div>
+                    <span>Ocean</span>
+                </button>
+                <button class="theme-btn" data-theme="sunset">
+                    <div class="theme-preview sunset"></div>
+                    <span>Sunset</span>
+                </button>
+                <button class="theme-btn" data-theme="forest">
+                    <div class="theme-preview forest"></div>
+                    <span>Forest</span>
+                </button>
+                <button class="theme-btn" data-theme="night">
+                    <div class="theme-preview night"></div>
+                    <span>Night</span>
+                </button>
+                <button class="theme-btn" data-theme="aurora">
+                    <div class="theme-preview aurora"></div>
+                    <span>Aurora</span>
+                </button>
+                <button class="theme-btn" data-theme="minimal">
+                    <div class="theme-preview minimal"></div>
+                    <span>Minimal</span>
+                </button>
+                <button class="theme-btn" data-theme="rain">
+                    <div class="theme-preview rain"></div>
+                    <span>Rain</span>
+                </button>
+                <button class="theme-btn" data-theme="stars">
+                    <div class="theme-preview stars"></div>
+                    <span>Stars</span>
+                </button>
+                <button class="theme-btn" data-theme="cherry-blossom">
+                    <div class="theme-preview cherry-blossom"></div>
+                    <span>Cherry Blossom</span>
+                </button>
+                <button class="theme-btn" data-theme="ocean-waves">
+                    <div class="theme-preview ocean-waves"></div>
+                    <span>Ocean Waves</span>
+                </button>
+                <button class="theme-btn" data-theme="autumn">
+                    <div class="theme-preview autumn"></div>
+                    <span>Autumn</span>
+                </button>
+                <button class="theme-btn" data-theme="spring">
+                    <div class="theme-preview spring"></div>
+                    <span>Spring</span>
+                </button>
+                <button class="theme-btn" data-theme="summer">
+                    <div class="theme-preview summer"></div>
+                    <span>Summer</span>
+                </button>
+                <button class="theme-btn" data-theme="winter">
+                    <div class="theme-preview winter"></div>
+                    <span>Winter</span>
+                </button>
+                <button class="theme-btn" data-theme="galaxy">
+                    <div class="theme-preview galaxy"></div>
+                    <span>Galaxy</span>
+                </button>
+                <button class="theme-btn" data-theme="neon">
+                    <div class="theme-preview neon"></div>
+                    <span>Neon</span>
+                </button>
+                <button class="theme-btn" data-theme="vintage">
+                    <div class="theme-preview vintage"></div>
+                    <span>Vintage</span>
+                </button>
+                <button class="theme-btn" data-theme="cyberpunk">
+                    <div class="theme-preview cyberpunk"></div>
+                    <span>Cyberpunk</span>
+                </button>
+                <button class="theme-btn" data-theme="lavender">
+                    <div class="theme-preview lavender"></div>
+                    <span>Lavender</span>
+                </button>
+                <button class="theme-btn" data-theme="emerald">
+                    <div class="theme-preview emerald"></div>
+                    <span>Emerald</span>
+                </button>
+                <button class="theme-btn" data-theme="coral">
+                    <div class="theme-preview coral"></div>
+                    <span>Coral</span>
+                </button>
+                <button class="theme-btn" data-theme="midnight">
+                    <div class="theme-preview midnight"></div>
+                    <span>Midnight</span>
+                </button>
+                <button class="theme-btn" data-theme="golden">
+                    <div class="theme-preview golden"></div>
+                    <span>Golden</span>
+                </button>
+                <button class="theme-btn" data-theme="rose">
+                    <div class="theme-preview rose"></div>
+                    <span>Rose</span>
+                </button>
+                <button class="theme-btn" data-theme="mint">
+                    <div class="theme-preview mint"></div>
+                    <span>Mint</span>
+                </button>
+                <button class="theme-btn" data-theme="peach">
+                    <div class="theme-preview peach"></div>
+                    <span>Peach</span>
+                </button>
+                <button class="theme-btn" data-theme="indigo">
+                    <div class="theme-preview indigo"></div>
+                    <span>Indigo</span>
+                </button>
+                <button class="theme-btn" data-theme="turquoise">
+                    <div class="theme-preview turquoise"></div>
+                    <span>Turquoise</span>
+                </button>
+                <button class="theme-btn" data-theme="crimson">
+                    <div class="theme-preview crimson"></div>
+                    <span>Crimson</span>
+                </button>
+                <button class="theme-btn" data-theme="silver">
+                    <div class="theme-preview silver"></div>
+                    <span>Silver</span>
+                </button>
+                <button class="theme-btn" data-theme="copper">
+                    <div class="theme-preview copper"></div>
+                    <span>Copper</span>
+                </button>
+                <button class="theme-btn" data-theme="amethyst">
+                    <div class="theme-preview amethyst"></div>
+                    <span>Amethyst</span>
+                </button>
+                <button class="theme-btn" data-theme="jade">
+                    <div class="theme-preview jade"></div>
+                    <span>Jade</span>
+                </button>
+                <button class="theme-btn" data-theme="ruby">
+                    <div class="theme-preview ruby"></div>
+                    <span>Ruby</span>
+                </button>
+                <button class="theme-btn" data-theme="sapphire">
+                    <div class="theme-preview sapphire"></div>
+                    <span>Sapphire</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creator Credit -->
+    <div class="creator-credit">
+        Created by <span class="creator-name">bolu_bme</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

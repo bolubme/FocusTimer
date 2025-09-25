@@ -1,0 +1,36 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f7931e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient)" stroke="#e55a2b" stroke-width="8"/>
+  
+  <!-- Stopwatch Face -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="white" stroke-width="6" opacity="0.9"/>
+  
+  <!-- Hour Marks -->
+  <g stroke="white" stroke-width="3" stroke-linecap="round">
+    <line x1="256" y1="90" x2="256" y2="110"/>
+    <line x1="422" y1="256" x2="402" y2="256"/>
+    <line x1="256" y1="422" x2="256" y2="402"/>
+    <line x1="90" y1="256" x2="110" y2="256"/>
+    <line x1="364.85" y1="147.15" x2="350.85" y2="161.15"/>
+    <line x1="364.85" y1="364.85" x2="350.85" y2="350.85"/>
+    <line x1="147.15" y1="364.85" x2="161.15" y2="350.85"/>
+    <line x1="147.15" y1="147.15" x2="161.15" y2="161.15"/>
+  </g>
+  
+  <!-- Checkmark -->
+  <path d="M 200 256 L 240 296 L 312 224" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  
+  <!-- Stopwatch Crown/Button -->
+  <rect x="240" y="60" width="32" height="20" rx="4" fill="white" opacity="0.9"/>
+  <rect x="244" y="64" width="24" height="12" rx="2" fill="url(#gradient)"/>
+  
+  <!-- Center Dot -->
+  <circle cx="256" cy="256" r="8" fill="white"/>
+</svg>
